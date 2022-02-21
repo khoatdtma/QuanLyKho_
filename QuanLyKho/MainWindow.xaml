@@ -18,10 +18,15 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" 
         WindowStyle="None"        
-        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Name="mainWindow"
         DataContext="{StaticResource MainVM}"
         Title="Main-Window" Height="300" Width="325">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=ucControlBar}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -30,5 +35,34 @@
         <Grid>
             <uc:ControlBarUC Tag="{Binding Title, ElementName=mainWindow}"></uc:ControlBarUC>
         </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--menu-->
+            <Grid Grid.Row="0">
+                
+            </Grid>
+            
+            <!--main-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--filter-->
+                <Grid Grid.Row="0">
+
+                </Grid>
+                <!--list-->
+                <Grid Grid.Row="1">
+
+                </Grid>
+            </Grid>
+        </Grid>
+
+
+
     </Grid>
 </Window>
