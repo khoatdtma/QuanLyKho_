@@ -10,9 +10,16 @@ namespace QuanLyKho.ViewModel
     public class MainViewModel : BaseViewModel
     {
         // mọi thứ xử lý sẽ nằm trong này
+
+
+        public bool IsLoaded { get; set; } = false;
         public MainViewModel()
         {
-            MessageBox.Show("Đã vào trong MainViewModel -> DataContext của mainwindow.xaml");
+            if (!IsLoaded)
+            {
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.ShowDialog();
+            }
         }
     }
 }
