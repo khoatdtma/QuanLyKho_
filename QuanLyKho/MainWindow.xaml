@@ -21,7 +21,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Name="mainWindow"
         DataContext="{StaticResource MainVM}"
-        Title="Main-Window" Height="300" Width="650">
+        Title="Stock manager application" Height="800" Width="650">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=ucControlBar}"/>
@@ -38,106 +38,116 @@
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
             <!--menu-->
             <Grid Grid.Row="0">
-                <StackPanel HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
-                            Background="Transparent" Orientation="Horizontal">
-                    <StackPanel.Resources>
-                        <Style TargetType="Button">
-                            <Setter Property="Margin" Value="2 4 2 4"></Setter>
-                            <Setter Property="Width" Value="70"></Setter>
-                            <Setter Property="Height" Value="70"></Setter>
-                            <Setter Property="Background" Value="LightCyan"></Setter>
-                        </Style>
-                    </StackPanel.Resources>
-                    <!--import-->
-                    <Button ToolTip="Import">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" HorizontalAlignment="Center">
-                                <TextBlock Text="Import"/>
+                <materialDesign:Card Margin="10">
+                    <Grid HorizontalAlignment="Stretch"  
+                      VerticalAlignment="Stretch"
+                      Background="Transparent">
+                        <Grid.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="4"></Setter>
+                                <Setter Property="Background" Value="LightCyan"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!--import-->
+                        <Button ToolTip="Import" Grid.Column="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="Import"/>
+                                </Grid>
+                                <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="ArchiveArrowDownOutline" />
+                                </Grid>
                             </Grid>
-                            <Grid Grid.Row="1" HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Twitter"/>
+                        </Button>
+                        <!--Export-->
+                        <Button ToolTip="Export" Grid.Column="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="Export"/>
+                                </Grid>
+                                <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="ArchiveArrowUp" />
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Button>
-                    <Button ToolTip="Export">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" HorizontalAlignment="Center">
-                                <TextBlock Text="Export"/>
+                        </Button>
+                        <Button ToolTip="Products" Grid.Column="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="Products"/>
+                                </Grid>
+                                <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="PaletteSwatch" />
+                                </Grid>
                             </Grid>
-                            <Grid Grid.Row="1" HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Twitter"/>
+                        </Button>
+                        <Button ToolTip="Unit" Grid.Column="3">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="Unit"/>
+                                </Grid>
+                                <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="PencilRuler" />
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Button>
-                    <Button ToolTip="Products">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" HorizontalAlignment="Center">
-                                <TextBlock Text="Products"/>
+                        </Button>
+                        <Button ToolTip="Supplier" Grid.Column="4">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="Supplier"/>
+                                </Grid>
+                                <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="HumanMaleBoardPoll" />
+                                </Grid>
                             </Grid>
-                            <Grid Grid.Row="1" HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Twitter"/>
+                        </Button>
+                        <Button ToolTip="Customer" Grid.Column="5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="Customer"/>
+                                </Grid>
+                                <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="HumanDolly" />
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Button>
-                    <Button ToolTip="Unit">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" HorizontalAlignment="Center">
-                                <TextBlock Text="Unit"/>
-                            </Grid>
-                            <Grid Grid.Row="1" HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Twitter"/>
-                            </Grid>
-                        </Grid>
-                    </Button>
-                    <Button ToolTip="Supplier">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" HorizontalAlignment="Center">
-                                <TextBlock Text="Supplier"/>
-                            </Grid>
-                            <Grid Grid.Row="1" HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Twitter"/>
-                            </Grid>
-                        </Grid>
-                    </Button>
-                    <Button ToolTip="Customer">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" HorizontalAlignment="Center">
-                                <TextBlock Text="Customer"/>
-                            </Grid>
-                            <Grid Grid.Row="1" HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Twitter"/>
-                            </Grid>
-                        </Grid>
-                    </Button>
-                </StackPanel>
+                        </Button>
+                    </Grid>
+                </materialDesign:Card>
             </Grid>
 
             <!--main-->
@@ -148,12 +158,248 @@
                 </Grid.RowDefinitions>
                 <!--filter-->
                 <Grid Grid.Row="0">
+                    <materialDesign:Card Margin="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" VerticalAlignment="Center">
+                                    <DatePicker Margin="5"
+                                        HorizontalAlignment="Left"
+                                        Width="100"
+                                        materialDesign:HintAssist.Hint="Start day"
+                                        materialDesign:TextFieldAssist.HasClearButton="True"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                </Grid>
+                                <Grid Grid.Column="1" VerticalAlignment="Center">
+                                    <DatePicker Margin="5"
+                                        HorizontalAlignment="Left"
+                                        Width="100"
+                                        materialDesign:HintAssist.Hint="End day"
+                                        materialDesign:TextFieldAssist.HasClearButton="True"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                            Width="100"
+                                            Margin="5"
+                                            ToolTip="Resource name: MaterialDesignRaisedButton"
+                                            Content="Filter"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Separator Height="20"></Separator>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <materialDesign:Card
+                                        Margin="5"
+                                        Background="#03a9f4"
+                                        Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                        Padding="0"
+                                        Width="200">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                Grid.Row="0"
+                                                Margin="16 16 16 4"
+                                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                                Text="Import amount" />
+                                            <Separator
+                                                Grid.Row="1"
+                                                Style="{StaticResource MaterialDesignLightSeparator}" />
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Margin="16 0 16 8"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                                Text="99999" />
+                                            <materialDesign:PopupBox
+                                                HorizontalAlignment="Right"
+                                                Padding="2 0 2 0">
+                                                <StackPanel>
+
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </Grid>
+                                    </materialDesign:Card>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <materialDesign:Card
+                                        HorizontalAlignment="Center"
+                                        Margin="5"
+                                        Background="#03a9f4"
+                                        Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                        Padding="0"
+                                        Width="200">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                Grid.Row="0"
+                                                Margin="16 16 16 4"
+                                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                                Text="Export amount" />
+                                            <Separator
+                                                Grid.Row="1"
+                                                Style="{StaticResource MaterialDesignLightSeparator}" />
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Margin="16 0 16 8"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                                Text="99999" />
+                                            <materialDesign:PopupBox
+                                                HorizontalAlignment="Right"
+                                                Padding="2 0 2 0">
+                                                <StackPanel>
+
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </Grid>
+                                    </materialDesign:Card>
+
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <materialDesign:Card
+                                        Margin="5"
+                                        Background="#03a9f4"
+                                        Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                                        Padding="0"
+                                        Width="200">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                Grid.Row="0"
+                                                Margin="16 16 16 4"
+                                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                                Text="In stock" />
+                                            <Separator
+                                                Grid.Row="1"
+                                                Style="{StaticResource MaterialDesignLightSeparator}" />
+                                            <TextBlock
+                                                Grid.Row="2"
+                                                Margin="16 0 16 8"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                                Text="99999" />
+                                            <materialDesign:PopupBox
+                                                HorizontalAlignment="Right"
+                                                Padding="2 0 2 0">
+                                                <StackPanel>
+
+                                                </StackPanel>
+                                            </materialDesign:PopupBox>
+                                        </Grid>
+                                    </materialDesign:Card>
+
+                                </Grid>
+                            </Grid>
+
+                        </Grid>
+                    </materialDesign:Card>
                 </Grid>
+
                 <!--list-->
-                <Grid Grid.Row="1">
+                <materialDesign:Card Grid.Row="1" Margin="10" HorizontalAlignment="Stretch">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" VerticalAlignment="Center">
+                                <DatePicker Margin="5"
+                                        HorizontalAlignment="Left"
+                                        Width="100"
+                                        materialDesign:HintAssist.Hint="Start day"
+                                        materialDesign:TextFieldAssist.HasClearButton="True"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                            </Grid>
+                            <Grid Grid.Column="1" VerticalAlignment="Center">
+                                <DatePicker Margin="5"
+                                        HorizontalAlignment="Left"
+                                        Width="100"
+                                        materialDesign:HintAssist.Hint="End day"
+                                        materialDesign:TextFieldAssist.HasClearButton="True"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                            Width="100"
+                                            Margin="5"
+                                            ToolTip="Resource name: MaterialDesignRaisedButton"
+                                            Content="Filter"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                            </Grid>
+                        </Grid>
 
-                </Grid>
+                        <Grid Grid.Row="1">
+                            
+                        <Separator Margin="5"></Separator>
+                        </Grid>
+                        
+                        <Grid Grid.Row="2">
+                            <ListView>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="STT"></GridViewColumn>
+                                        <GridViewColumn Header="STT"></GridViewColumn>
+                                        <GridViewColumn Header="STT"></GridViewColumn>
+                                        <GridViewColumn Header="STT"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+
             </Grid>
         </Grid>
 
