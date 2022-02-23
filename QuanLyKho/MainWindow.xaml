@@ -19,7 +19,8 @@
         ResizeMode="NoResize" 
         WindowStyle="None"        
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        Name="mainWindow"
+        Name="window"
+        
         DataContext="{StaticResource MainVM}"
         Title="Stock manager application" Height="800" Width="650">
     <i:Interaction.Triggers>
@@ -33,7 +34,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <uc:ControlBarUC Tag="{Binding Title, ElementName=mainWindow}"></uc:ControlBarUC>
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -53,6 +54,7 @@
                             </Style>
                         </Grid.Resources>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -90,7 +92,7 @@
                                 </Grid>
                             </Grid>
                         </Button>
-                        <Button ToolTip="Products" Grid.Column="2">
+                        <Button ToolTip="Products" Grid.Column="2" Command="{Binding ProductCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -104,7 +106,7 @@
                                 </Grid>
                             </Grid>
                         </Button>
-                        <Button ToolTip="Unit" Grid.Column="3">
+                        <Button ToolTip="Unit" Grid.Column="3" Command="{Binding UnitCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -118,7 +120,7 @@
                                 </Grid>
                             </Grid>
                         </Button>
-                        <Button ToolTip="Supplier" Grid.Column="4">
+                        <Button ToolTip="Supplier" Grid.Column="4" Command="{Binding SupplierCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -132,7 +134,7 @@
                                 </Grid>
                             </Grid>
                         </Button>
-                        <Button ToolTip="Customer" Grid.Column="5">
+                        <Button ToolTip="Customer" Grid.Column="5" Command="{Binding CustomerCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -143,6 +145,20 @@
                                 </Grid>
                                 <Grid Grid.Row="1" HorizontalAlignment="Center">
                                     <materialDesign:PackIcon Kind="HumanDolly" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+                        <Button ToolTip="User" Grid.Column="6">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="User"/>
+                                </Grid>
+                                <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="HumanGreetingVariant" />
                                 </Grid>
                             </Grid>
                         </Button>
