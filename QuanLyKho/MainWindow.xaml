@@ -20,6 +20,7 @@
         WindowStyle="None"        
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Name="mainWindow"
+        
         DataContext="{StaticResource MainVM}"
         Title="Stock manager application" Height="800" Width="650">
     <i:Interaction.Triggers>
@@ -53,6 +54,7 @@
                             </Style>
                         </Grid.Resources>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -143,6 +145,20 @@
                                 </Grid>
                                 <Grid Grid.Row="1" HorizontalAlignment="Center">
                                     <materialDesign:PackIcon Kind="HumanDolly" />
+                                </Grid>
+                            </Grid>
+                        </Button>
+                        <Button ToolTip="User" Grid.Column="6">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="User"/>
+                                </Grid>
+                                <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="HumanGreetingVariant" />
                                 </Grid>
                             </Grid>
                         </Button>
