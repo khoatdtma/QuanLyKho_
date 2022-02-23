@@ -18,6 +18,9 @@ namespace QuanLyKho.ViewModel
         public ICommand SupplierCommand { get; set; }
         public ICommand CustomerCommand { get; set; }
         public ICommand ProductCommand { get; set; }
+        public ICommand UserCommand { get; set; }
+        public ICommand InputCommand { get; set; }
+        public ICommand OutputCommand { get; set; }
         public MainViewModel()
         {
             LoadedWindowCommand = new RelayCommand<object>((p) => true, (p) =>
@@ -34,6 +37,7 @@ namespace QuanLyKho.ViewModel
                     UnitWindow wd = new UnitWindow();
                     wd.ShowDialog();
                 });
+
             SupplierCommand = new RelayCommand<object>(
                 (p) => true,
                 (p) =>
@@ -41,6 +45,7 @@ namespace QuanLyKho.ViewModel
                     SupplierWindow wd = new SupplierWindow();
                     wd.ShowDialog();
                 });
+
             CustomerCommand = new RelayCommand<object>(
             (p) => true,
             (p) =>
@@ -48,11 +53,28 @@ namespace QuanLyKho.ViewModel
                 CustomerWindow wd = new CustomerWindow();
                 wd.ShowDialog();
             });
-            ProductCommand = new RelayCommand<object>(
-            (p) => true,
-            (p) =>
+
+            ProductCommand = new RelayCommand<object>((p) => true,(p) =>
             {
-                CustomerWindow wd = new CustomerWindow();
+                ProductWindow wd = new ProductWindow();
+                wd.ShowDialog();
+            });
+
+            UserCommand = new RelayCommand<object>((p) => true, (p) =>
+            {
+                UserWindow wd = new UserWindow();
+                wd.ShowDialog();
+            });
+
+            InputCommand = new RelayCommand<object>((p) => true, (p) =>
+            {
+                InputWindow wd = new InputWindow();
+                wd.ShowDialog();
+            });
+
+            OutputCommand = new RelayCommand<object>((p) => true, (p) =>
+            {
+                OutputWindow wd = new OutputWindow();
                 wd.ShowDialog();
             });
         }
