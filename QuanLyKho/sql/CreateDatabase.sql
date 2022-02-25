@@ -1,8 +1,8 @@
-create database Quanlykho;
-go
+--create database Quanlykho;
+--go
 
-use Quanlykho;
-go
+--use Quanlykho;
+--go
 
 create table Unit(
 	Id int identity(1,1) primary key,
@@ -74,6 +74,7 @@ create table InputInfo(
 	Count int,
 	InputPrice float default 0,
 	OutputPrice float default 0,
+	Status nvarchar(max),
 
 	foreign key (IdProduct) references Product(Id),
 	foreign key (IdInput) references Input(Id)
@@ -90,13 +91,20 @@ create table OutputInfo(
 	Id int identity(1,1) primary key,
 	IdProduct nvarchar(128) not null,
 	IdInputInfo nvarchar(128) not null,
-	IdCustomer nvarchar(128) not null,
+	IdCustomer int not null,
 	Count int,
-	InputPrice float default 0,
-	OutputPrice float default 0,
+	Status nvarchar(max),
 
 	foreign key (IdProduct) references Product(Id),
 	foreign key (IdInputInfo) references InputInfo(Id),
 	foreign key (IdCustomer) references Customer(Id)
 )
 go
+
+insert into UserRole(DisplayName) values
+('admin')
+,('staff');
+
+insert into Users(DisplayName,Username,Password,IdRole) values
+('KhoaTD','admin','db69fc039dcbd2962cb4d28f5891aae1',1)
+,('staff','staff','978aae9bb6bee8fb75de3e4830a1be46',2);
