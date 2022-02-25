@@ -63,7 +63,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <!--import-->
-                        <Button ToolTip="Import" Grid.Column="0">
+                        <Button ToolTip="Import" Grid.Column="0" Command="{Binding InputCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -78,7 +78,7 @@
                             </Grid>
                         </Button>
                         <!--Export-->
-                        <Button ToolTip="Export" Grid.Column="1">
+                        <Button ToolTip="Export" Grid.Column="1" Command="{Binding OutputCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -148,7 +148,7 @@
                                 </Grid>
                             </Grid>
                         </Button>
-                        <Button ToolTip="User" Grid.Column="6">
+                        <Button ToolTip="User" Grid.Column="6" Command="{Binding UserCommand}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>

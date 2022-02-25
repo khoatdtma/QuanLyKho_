@@ -44,7 +44,7 @@
             <!--element binding from selected item-->
             <materialDesign:Card Grid.Row="0" Margin="5">
                 <Grid>
-                    <TextBox Text="{Binding DisplayName}"
+                    <TextBox Text="{Binding DisplayName,UpdateSourceTrigger=PropertyChanged}"
                         Margin="5"
                         materialDesign:HintAssist.Hint="Unit name"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
