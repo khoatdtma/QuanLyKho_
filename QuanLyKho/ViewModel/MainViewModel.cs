@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKho.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,6 +78,8 @@ namespace QuanLyKho.ViewModel
                 OutputWindow wd = new OutputWindow();
                 wd.ShowDialog();
             });
+
+            int x = DataProvider.Instance.DB.Users.ToList().Count();
         }
     }
 }
