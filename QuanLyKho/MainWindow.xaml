@@ -25,7 +25,7 @@
         Title="Stock manager application" Height="800" Width="650">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=ucControlBar}"/>
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=window}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
