@@ -12,14 +12,18 @@ namespace QuanLyKho.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class UserRole
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserRole()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
         public int Id { get; set; }
         public string DisplayName { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public int IdRole { get; set; }
     
-        public virtual UserRole UserRole { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

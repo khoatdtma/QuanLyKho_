@@ -12,14 +12,17 @@ namespace QuanLyKho.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class OutputInfo
     {
         public int Id { get; set; }
-        public string DisplayName { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public int IdRole { get; set; }
+        public string IdProduct { get; set; }
+        public string IdOutput { get; set; }
+        public int IdCustomer { get; set; }
+        public Nullable<int> Count { get; set; }
+        public string Status { get; set; }
     
-        public virtual UserRole UserRole { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Output Output { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
