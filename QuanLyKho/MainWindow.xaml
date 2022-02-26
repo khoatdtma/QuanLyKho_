@@ -411,9 +411,6 @@
                                                         DisplayMemberBinding="{Binding product.DisplayName}"/>
                                         <GridViewColumn Header="In stock"
                                                         DisplayMemberBinding="{Binding SoLuongTon}"/>
-                                                                                                                DisplayMemberBinding="{Binding product.DisplayName}"/>
-
-
                                     </GridView>
                                 </ListView.View>
                             </ListView>

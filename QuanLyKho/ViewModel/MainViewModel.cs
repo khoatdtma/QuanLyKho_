@@ -117,15 +117,15 @@ namespace QuanLyKho.ViewModel
                 int outputAmount = 0;
 
                 //get input amount
-                var inputList = DataProvider.Instance.DB.InputInfoes.Where(p => p.IdProduct == product.Id);
+                var inputList = DataProvider.Instance.DB.InputInfoes.Where((p) => p.IdProduct == product.Id);
                 if (inputList != null)
                     inputAmount = (int)inputList.Sum(p=> p.Count);
 
 
                 //get output amout
-                var outputList = DataProvider.Instance.DB.OutputInfoes.Where(p => p.IdProduct == product.Id);
+                var outputList = DataProvider.Instance.DB.OutputInfoes.Where((p) => p.IdProduct == product.Id);
                 if (outputList != null)
-                    inputAmount = (int)outputList.Sum(p => p.Count);
+                    outputAmount = (int)outputList.Sum(p => p.Count);
 
                 //create and set Tonkho object
                 TonKho tonkho = new TonKho();

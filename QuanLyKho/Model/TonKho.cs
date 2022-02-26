@@ -13,8 +13,5 @@ namespace QuanLyKho.Model
 
         public int SoLuongTon { get; set; }
 
-
-
-
     }
 }
