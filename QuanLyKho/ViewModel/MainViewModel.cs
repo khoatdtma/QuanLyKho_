@@ -1,5 +1,7 @@
-﻿using System;
+﻿using QuanLyKho.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,11 @@ namespace QuanLyKho.ViewModel
     public class MainViewModel : BaseViewModel
     {
         // mọi thứ xử lý sẽ nằm trong này
+        private ObservableCollection<TonKho> _TonKhoList;
+        public ObservableCollection<TonKho> TonKhoList { 
+            get { return _TonKhoList; } 
+            set { _TonKhoList = value;OnPropertyChanged(); } 
+        }
 
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedWindowCommand { get; set; }
@@ -23,11 +30,27 @@ namespace QuanLyKho.ViewModel
         public ICommand OutputCommand { get; set; }
         public MainViewModel()
         {
-            LoadedWindowCommand = new RelayCommand<object>((p) => true, (p) =>
+            //when window is loading
+            LoadedWindowCommand = new RelayCommand<Window>((p) => true, (p) =>
             {
                 IsLoaded = true;
+
+                if (p == null)
+                    return;
+                p.Hide();
+                
                 LoginWindow loginWindow = new LoginWindow();
                 loginWindow.ShowDialog();
+                var loginVM = loginWindow.DataContext as LoginViewModel;
+                if (loginVM.isLogin)
+                {
+                    p.Show();
+                    GetTonKhoList();
+                }
+                else
+                {
+                    p.Hide();
+                }
             });
 
             UnitCommand = new RelayCommand<object>(
@@ -77,6 +100,42 @@ namespace QuanLyKho.ViewModel
                 OutputWindow wd = new OutputWindow();
                 wd.ShowDialog();
             });
+
+            int x = DataProvider.Instance.DB.Users.ToList().Count();
+
+        }
+        void GetTonKhoList()
+        {
+            TonKhoList = new ObservableCollection<TonKho>();
+
+            //get all products in product table
+            var products = DataProvider.Instance.DB.Products;
+            int i = 1;
+            foreach(var product in products)
+            {
+                int inputAmount = 0;
+                int outputAmount = 0;
+
+                //get input amount
+                var inputList = DataProvider.Instance.DB.InputInfoes.Where((p) => p.IdProduct == product.Id);
+                if (inputList != null)
+                    inputAmount = (int)inputList.Sum(p=> p.Count);
+
+
+                //get output amout
+                var outputList = DataProvider.Instance.DB.OutputInfoes.Where((p) => p.IdProduct == product.Id);
+                if (outputList != null)
+                    outputAmount = (int)outputList.Sum(p => p.Count);
+
+                //create and set Tonkho object
+                TonKho tonkho = new TonKho();
+                tonkho.STT = i++;
+                tonkho.product = product;
+                tonkho.SoLuongTon = inputAmount - outputAmount;
+
+                //add Tonkho to TonkhoList
+                TonKhoList.Add(tonkho);
+            }
         }
     }
 }

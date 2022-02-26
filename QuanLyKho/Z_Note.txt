@@ -1,0 +1,2 @@
+save password 
+	string --> base64 --> MD5 --> store in database
