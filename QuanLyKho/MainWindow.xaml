@@ -402,13 +402,18 @@
                         </Grid>
                         
                         <Grid Grid.Row="2">
-                            <ListView>
+                            <ListView ItemsSource="{Binding TonKhoList}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="STT"></GridViewColumn>
-                                        <GridViewColumn Header="STT"></GridViewColumn>
-                                        <GridViewColumn Header="STT"></GridViewColumn>
-                                        <GridViewColumn Header="STT"></GridViewColumn>
+                                        <GridViewColumn Header="STT"
+                                                        DisplayMemberBinding="{Binding STT}"/>
+                                        <GridViewColumn Header="Product Name"
+                                                        DisplayMemberBinding="{Binding product.DisplayName}"/>
+                                        <GridViewColumn Header="In stock"
+                                                        DisplayMemberBinding="{Binding SoLuongTon}"/>
+                                                                                                                DisplayMemberBinding="{Binding product.DisplayName}"/>
+
+
                                     </GridView>
                                 </ListView.View>
                             </ListView>
